@@ -15,7 +15,7 @@ include = [ "/src" ]
 
 [project]
 name = "oss-eu-2022-tutorial-mv"
-version = "0.0.4"
+version = "0.0.5"
 authors = [
   { name="Martin Vrachev", email="mvrachev@vmware.com" },
 ]
