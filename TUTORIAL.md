@@ -110,3 +110,23 @@ described in step 8) and if everything is correct go to your project's GitHub pa
 `Actions` -> choose the last workflow run -> you will see that `upload` is orange, click it ->
 choose `Review pending deployments` -> click `Release` -> click `Approve and deploy`.
 Now you can verify everything is as expected by going to [Test PyPI](https://test.pypi.org/).
+18. Now you are going to remove the need to manually run the workflow, but instead
+the workflow will be triggered whenever there is a tag with a name starting with `v`.
+The change required inside `release.yml` is included in the commit adding this step.
+19. Go to the GitHub page of your project -> click `Settings` -> `Environments`
+-> click the name of your environment -> under `Deployment branches` click the `All branches`
+button and then choose `Selected branches` -> click `Add deployment branch rule` ->
+in the `Branch name pattern` box write `v*`
+This makes sure that only branches/tags starting with the name `v` can use the environmental secrets.
+20. Make a new release by updating the project version in `pyproject.toml`.
+21. Tag your local project with `git tag "<TAG_NAME>" -m <TAG_MESSAGE>"` where
+`TAG_NAME` **MUST** start with a `v`.
+22. Push the changes to GitHub. Don't forget to add `--tags` to the push command
+otherwise the tag won't appear on GitHub.
+23. View the last workflow that was automatically triggered, verify and upload
+your new project version (see step 17).
+
+This is all I wanted to show you in this tutorial!
+
+This tutorial was developed with the great help of [Jussi Kukkonen](https://github.com/jku)
+and [Joshua Lock](https://github.com/joshuagl)!

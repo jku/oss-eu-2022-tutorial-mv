@@ -2,8 +2,11 @@ name: GitHub release workflow example
 
 # "on" specifies the workflow trigger.
 on:
-  # "workflow_dispatch" means that a manual trigger is required to run this workflow
-  workflow_dispatch:
+  # Automatic trigger which will be activated on a pushed commit which has a tag
+  # attached to it with a name starting with "v".
+  push:
+    tags:
+      - v*
 
 jobs:
   build: # name of that particular step in the job, it could be a custom string
